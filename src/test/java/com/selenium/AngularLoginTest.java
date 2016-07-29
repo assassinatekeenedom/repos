@@ -27,19 +27,20 @@ public class AngularLoginTest extends UserStory {
 
     @Test(dataProvider = "browsers", threadPoolSize = 10)
     public void userStory(WebDriver browser) {
-        add(new DeleteAllCookies());
-        add(new Open("http://localhost:8080"));
-        add(new WaitForElement("nogreeting", "10"));
-        add(new Click("login"));
-        add(new WaitForElement("username", "10"));
-        add(new Type("username", "user"));
-        add(new Type("password", "password"));
-        add(new Click("submit"));
-        add(new WaitForElement("greeting", "10"));
-        add(new Click("logout"));
-        add(new WaitForElement("nogreeting", "10"));
-        add(new Close());
-        action(browser);
+        AngularLoginTest test = new AngularLoginTest();
+        test.add(new DeleteAllCookies());
+        test.add(new Open("http://localhost:8080"));
+        test.add(new WaitForElement("login", "60"));
+        test.add(new Click("login"));
+        test.add(new WaitForElement("username", "60"));
+        test.add(new Type("username", "user"));
+        test.add(new Type("password", "password"));
+        test.add(new Click("submit"));
+        test.add(new WaitForElement("greeting", "60"));
+        test.add(new Click("logout"));
+        test.add(new WaitForElement("nogreeting", "60"));
+        test.add(new Close());
+        test.action(browser);
     }
 
 }
