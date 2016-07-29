@@ -7,9 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class WaitForElement extends ActionData{
+public class Wait extends ActionData{
  
-   public WaitForElement(String target, String value) {
+   public Wait(String target, String value) {
         super(target, value);
     }
 

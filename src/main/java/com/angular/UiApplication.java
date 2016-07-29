@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-public class UiApplication {
+public class UiApplication implements Runnable {
 
     @RequestMapping("/user")
     public Principal user(Principal user) {
@@ -33,7 +33,11 @@ public class UiApplication {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(UiApplication.class, args);
+        new Thread(new UiApplication()).start();
+    }
+
+    public void run() {
+        SpringApplication.run(UiApplication.class);
     }
 
     @Configuration
