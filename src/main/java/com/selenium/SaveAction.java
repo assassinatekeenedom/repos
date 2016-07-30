@@ -33,13 +33,17 @@ public class SaveAction {
     
     @Column(length = Integer.MAX_VALUE)
     private String sessionId;
+    
+    @Column(length = Integer.MAX_VALUE)
+    private int stepNumber;
 
-    public SaveAction(String action, String userStory, String browser, String image, String sessionId) {
+    public SaveAction(String action, String userStory, String browser, String image, String sessionId, int index) {
         this.action = action;
         this.userStory = userStory;
         this.browser = browser;
         this.image = image;
         this.sessionId = sessionId;
+        this.stepNumber = index;
     }
 
     public int getId() {
@@ -88,6 +92,14 @@ public class SaveAction {
 
     public void setSessionId(String sessionId) {
         this.sessionId = sessionId;
+    }
+
+    public int getIndex() {
+        return stepNumber;
+    }
+
+    public void setIndex(int index) {
+        this.stepNumber = index;
     }
 
     @Override

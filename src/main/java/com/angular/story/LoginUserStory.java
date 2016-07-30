@@ -4,6 +4,7 @@ import com.selenium.UserStory;
 import com.selenium.action.Click;
 import com.selenium.action.Close;
 import com.selenium.action.DeleteAllCookies;
+import com.selenium.action.Maximize;
 import com.selenium.action.Open;
 import com.selenium.action.Type;
 import com.selenium.action.Wait;
@@ -16,6 +17,7 @@ public class LoginUserStory extends UserStory {
 
     @Override
     public void action(WebDriver browser) {
+        add(new Maximize());
         add(new DeleteAllCookies());
         add(new Open("http://localhost:8080"));
         add(new Wait("login", "60"));
