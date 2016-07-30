@@ -1,1 +1,2 @@
-java -jar selenium-server-standalone-2.53.1.jar -role hub
+@ECHO OFF
+start java -jar selenium-server-standalone-2.53.1.jar -role hub

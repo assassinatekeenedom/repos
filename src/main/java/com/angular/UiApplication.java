@@ -1,13 +1,13 @@
 package com.angular;
 
+import com.selenium.Save;
 import java.security.Principal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -33,6 +33,16 @@ public class UiApplication implements Runnable {
         model.put("id", UUID.randomUUID().toString());
         model.put("content", "Hello World");
         return model;
+    }
+
+    @RequestMapping("/browsers")
+    public List<String> getBrowsers() {
+        return Save.getBrowsers();
+    }
+    
+    @RequestMapping("/userstories")
+    public List<String> getUserStories() {
+        return Save.getUserStories();
     }
 
     public static void main(String[] args) {
