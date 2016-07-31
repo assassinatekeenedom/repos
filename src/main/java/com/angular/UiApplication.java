@@ -43,8 +43,22 @@ public class UiApplication implements Runnable {
 
     @RequestMapping("/browsers/{userstory}")
     public List<String> getBrowsers(@PathVariable("userstory") String story) {
-        System.out.println("looking for userstory: " + story);
         return DataBase.getBrowsers(story);
+    }
+    
+    @RequestMapping("/session/{browser}/{userstory}")
+    public List<String> getSession(@PathVariable("browser") String browser, @PathVariable("userstory") String story) {
+        return DataBase.getSessionIds(browser, story);
+    }
+    
+    @RequestMapping("/actions/{session}")
+    public List<Object[][]> getSteps(@PathVariable("session") String session) {
+        return DataBase.getSteps(session);
+    }
+    
+    @RequestMapping("/image/{id}")
+    public String getImage(@PathVariable("id") int id) {
+        return DataBase.getImage(id);
     }
 
     public static void main(String[] args) {
