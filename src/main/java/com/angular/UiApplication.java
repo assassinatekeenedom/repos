@@ -47,7 +47,7 @@ public class UiApplication implements Runnable {
     }
     
     @RequestMapping("/session/{browser}/{userstory}")
-    public List<String> getSession(@PathVariable("browser") String browser, @PathVariable("userstory") String story) {
+    public List<String> getSessions(@PathVariable("browser") String browser, @PathVariable("userstory") String story) {
         return DataBase.getSessionIds(browser, story);
     }
     
@@ -79,7 +79,7 @@ public class UiApplication implements Runnable {
                     .httpBasic()
                     .and()
                     .authorizeRequests()
-                    .antMatchers("/index.html", "/home.html", "/login.html", "/").permitAll()
+                    .antMatchers("/index.html", "/home.html", "/login.html", "/tests.html", "/").permitAll()
                     .anyRequest().authenticated().and()
                     .csrf()
                     .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
