@@ -11,8 +11,9 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-public class Save {
+public class DataBase {
 
+    private static final String base64 = "data:image/jpeg;base64,";
     private static final SessionFactory selenium;
 
     static {
@@ -29,7 +30,8 @@ public class Save {
         selenium = configuration.buildSessionFactory(new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build());
     }
 
-    public Object call() {
+    public static Object save(Object save) {
+        Session session = selenium.openSession();
         Transaction tx = session.beginTransaction();
         session.save(save);
         session.flush();
@@ -38,29 +40,19 @@ public class Save {
         session.close();
         return save;
     }
-    private Session session;
-    private Object save;
 
-    public Save(Session session, Object save) {
-        this.session = session;
-        this.save = save;
-    }
-
-    public static Object save(Object save) {
-        return new Save(selenium.openSession(), save).call();
-    }
-
-    public static List getBrowsers() {
+    public static List getUserStories() {
         Session session = selenium.openSession();
-        Query query = session.createQuery("select distinct browser from SaveAction");
+        Query query = session.createQuery("select distinct userStory from SaveAction");
         List results = query.getResultList();
         session.close();
         return results;
     }
 
-    public static List getUserStories() {
+    public static List getBrowsers(String userstory) {
         Session session = selenium.openSession();
-        Query query = session.createQuery("select distinct userStory from SaveAction");
+        Query query = session.createQuery("select distinct browser from SaveAction where userStory=:userstory")
+                .setParameter("userstory", userstory);
         List results = query.getResultList();
         session.close();
         return results;
@@ -75,16 +67,16 @@ public class Save {
         session.close();
         return results;
     }
-    
-    public static List getImage(int id) {
+
+    public static String getImage(int id) {
         Session session = selenium.openSession();
         Query query = session.createQuery("select image from SaveAction where id=:id")
                 .setParameter("id", id);
         List results = query.getResultList();
         session.close();
-        return results;
+        return base64 + results.get(0);
     }
-    
+
     public static List getSteps(String sessionId) {
         Session session = selenium.openSession();
         Query query = session.createQuery("select id, stepNumber, action from SaveAction where sessionId=:sessionId")

@@ -1,6 +1,6 @@
 package com.angular;
 
-import com.selenium.Save;
+import com.selenium.DataBase;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +14,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,14 +36,15 @@ public class UiApplication implements Runnable {
         return model;
     }
 
-    @RequestMapping("/browsers")
-    public List<String> getBrowsers() {
-        return Save.getBrowsers();
-    }
-    
     @RequestMapping("/userstories")
     public List<String> getUserStories() {
-        return Save.getUserStories();
+        return DataBase.getUserStories();
+    }
+
+    @RequestMapping("/browsers/{userstory}")
+    public List<String> getBrowsers(@PathVariable("userstory") String story) {
+        System.out.println("looking for userstory: " + story);
+        return DataBase.getBrowsers(story);
     }
 
     public static void main(String[] args) {

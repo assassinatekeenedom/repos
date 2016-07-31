@@ -5,7 +5,7 @@
  */
 package com.angular.story;
 
-import com.selenium.Save;
+import com.selenium.DataBase;
 import java.util.List;
 import org.testng.annotations.Test;
 
@@ -15,37 +15,40 @@ public class StoryResultsTest {
     }
 
     @Test
-    public void getBrowsers() {
-        System.out.println(Save.getJSON(Save.getBrowsers()));
+    public void getUserStories() {
+        System.out.println(DataBase.getJSON(DataBase.getUserStories()));
     }
 
     @Test
-    public void getUserStories() {
-        System.out.println(Save.getJSON(Save.getUserStories()));
+    public void getBrowsers() {
+        List<String> stories = DataBase.getUserStories();
+        for (String story : stories) {
+            System.out.println(DataBase.getJSON(DataBase.getBrowsers(story)));
+        }
     }
 
     @Test
     public void getSessionIds() {
-        List<String> browsers = Save.getBrowsers();
-        List<String> stories = Save.getUserStories();
+        List<String> stories = DataBase.getUserStories();
         for (String story : stories) {
+            List<String> browsers = DataBase.getBrowsers(story);
             System.out.println("\t" + story);
             for (String browser : browsers) {
                 System.out.println("\t\t" + browser);
-                System.out.println(Save.getJSON(Save.getSessionIds(browser, story)));
+                System.out.println(DataBase.getJSON(DataBase.getSessionIds(browser, story)));
             }
         }
     }
 
     @Test
     public void getStepNumbers() {
-        List<String> browsers = Save.getBrowsers();
-        List<String> stories = Save.getUserStories();
+        List<String> stories = DataBase.getUserStories();
         for (String story : stories) {
+            List<String> browsers = DataBase.getBrowsers(story);
             for (String browser : browsers) {
-                List<String> sessions = Save.getSessionIds(browser, story);
+                List<String> sessions = DataBase.getSessionIds(browser, story);
                 for (String session : sessions) {
-                    System.out.println(Save.getJSON(Save.getSteps(session)));
+                    System.out.println(DataBase.getJSON(DataBase.getSteps(session)));
                 }
             }
         }
@@ -53,16 +56,15 @@ public class StoryResultsTest {
 
     @Test
     public void getImages() {
-        List<String> browsers = Save.getBrowsers();
-        List<String> stories = Save.getUserStories();
+        List<String> stories = DataBase.getUserStories();
         for (String story : stories) {
+            List<String> browsers = DataBase.getBrowsers(story);
             for (String browser : browsers) {
-                List<String> sessions = Save.getSessionIds(browser, story);
+                List<String> sessions = DataBase.getSessionIds(browser, story);
                 for (String session : sessions) {
-                    List<Object[][]> steps = Save.getSteps(session);
+                    List<Object[][]> steps = DataBase.getSteps(session);
                     for (Object[] step : steps) {
-                        System.out.println("\t===" + step[0]);
-                        System.out.println(Save.getJSON(Save.getImage((Integer) step[0])));
+                        System.out.println(DataBase.getJSON(DataBase.getImage((Integer) step[0])));
                     }
                 }
             }
