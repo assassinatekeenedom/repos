@@ -74,7 +74,7 @@ public class DataBase {
                 .setParameter("id", id);
         List results = query.getResultList();
         session.close();
-        return DataBase.getJSON(base64 + results.get(0));
+        return getJSON(base64 + results.get(0));
     }
 
     public static List getSteps(String sessionId) {

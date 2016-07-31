@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class UiApplication implements Runnable {
 
     @RequestMapping("/user")
