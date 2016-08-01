@@ -6,6 +6,11 @@
             <class name="com.angular.story.LoginUserStoryTest" />            
         </classes>
     </test>
+    <test name="futureB">
+        <classes>
+            <class name="com.selenium.action.composite.CompositeUserStory" />            
+        </classes>
+    </test>
     <test name="past">
         <classes>
             <class name="com.angular.story.StoryResultsTest" />

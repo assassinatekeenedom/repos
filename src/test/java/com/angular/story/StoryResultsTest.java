@@ -48,7 +48,7 @@ public class StoryResultsTest {
             for (String browser : browsers) {
                 List<String> sessions = DataBase.getSessionIds(browser, story);
                 for (String session : sessions) {
-                    System.out.println(DataBase.getJSON(DataBase.getSteps(session)));
+                    System.out.println(DataBase.getJSON(DataBase.getSteps(session, story)));
                 }
             }
         }
@@ -62,7 +62,7 @@ public class StoryResultsTest {
             for (String browser : browsers) {
                 List<String> sessions = DataBase.getSessionIds(browser, story);
                 for (String session : sessions) {
-                    List<Object[][]> steps = DataBase.getSteps(session);
+                    List<Object[][]> steps = DataBase.getSteps(session, story);
                     for (Object[] step : steps) {
                         System.out.println(DataBase.getJSON(DataBase.getImage((Integer) step[0])));
                     }

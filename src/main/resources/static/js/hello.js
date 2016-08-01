@@ -41,6 +41,9 @@ angular.module('hello', ['ngRoute'])
                 self.browsers = [];
                 self.sessions = [];
                 self.actions = [];
+                self.data.browser = "";
+                self.data.session = "";
+                self.data.action = "";
                 self.data.image = "";
             });
             self.story = function() {
@@ -48,30 +51,36 @@ angular.module('hello', ['ngRoute'])
                     self.browsers = response.data;
                     self.sessions = [];
                     self.actions = [];
+                    self.data.session = "";
+                    self.data.action = "";
                     self.data.image = "";
+                    if (self.data.browser != "") {
+                        self.browser();
+                    }
                 });
             };
             self.browser = function() {
                 $http.get('/session/' + self.data.browser + "/" + self.data.story).then(function(response) {
                     self.sessions = response.data;
                     self.actions = [];
+                    self.data.action = "";
                     self.data.image = "";
+                    if (self.data.session != "") {
+                        self.action();
+                    }
                 });
             };
             self.action = function() {
-                $http.get('/actions/' + self.data.session).then(function(response) {
+                $http.get('/actions/' + self.data.session + "/" + self.data.story).then(function(response) {
                     self.actions = response.data;
                     self.data.image = "";
                 });
             };
-            
             self.image = function() {
                 $http.get('/image/' + self.data.action).then(function(response) {
                     self.data.image = response.data;
                 });
             };
-            
-
         })
         .controller('navigation',
                 function($rootScope, $http, $location) {

@@ -68,6 +68,16 @@ public class DataBase {
         return results;
     }
 
+    public static List getSteps(String sessionId, String userStory) {
+        Session session = selenium.openSession();
+        Query query = session.createQuery("select id, stepNumber, action from SaveAction where sessionId=:sessionId and userStory=:userStory")
+                .setParameter("sessionId", sessionId)
+                .setParameter("userStory", userStory);
+        List results = query.getResultList();
+        session.close();
+        return results;
+    }
+
     public static String getImage(int id) {
         Session session = selenium.openSession();
         Query query = session.createQuery("select image from SaveAction where id=:id")
@@ -75,15 +85,6 @@ public class DataBase {
         List results = query.getResultList();
         session.close();
         return getJSON(base64 + results.get(0));
-    }
-
-    public static List getSteps(String sessionId) {
-        Session session = selenium.openSession();
-        Query query = session.createQuery("select id, stepNumber, action from SaveAction where sessionId=:sessionId")
-                .setParameter("sessionId", sessionId);
-        List results = query.getResultList();
-        session.close();
-        return results;
     }
 
     public static String getJSON(Object any) {

@@ -50,9 +50,9 @@ public class UiApplication implements Runnable {
         return DataBase.getSessionIds(browser, story);
     }
     
-    @RequestMapping("/actions/{session}")
-    public List<Object[][]> getSteps(@PathVariable("session") String session) {
-        return DataBase.getSteps(session);
+    @RequestMapping("/actions/{session}/{userstory}")
+    public List<Object[][]> getSteps(@PathVariable("session") String session,@PathVariable("userstory") String userstory) {
+        return DataBase.getSteps(session,userstory);
     }
     
     @RequestMapping("/image/{id}")
