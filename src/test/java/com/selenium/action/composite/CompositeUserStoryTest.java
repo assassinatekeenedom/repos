@@ -1,15 +1,17 @@
-package com.angular.story;
+package com.selenium.action.composite;
 
-import com.selenium.UserStory;
+import com.selenium.CompositeAction;
 import java.net.MalformedURLException;
 import java.net.URL;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class LoginUserStoryTest extends UserStory {
+public class CompositeUserStoryTest {
+
+    public CompositeUserStoryTest() {
+    }
 
     @DataProvider(name = "browsers", parallel = true)
     public Object[][] createData1() throws MalformedURLException {
@@ -21,8 +23,11 @@ public class LoginUserStoryTest extends UserStory {
     }
 
     @Test(dataProvider = "browsers", threadPoolSize = 10)
-    public void userStory(WebDriver browser) {
-        new LoginUserStory().action(browser);
+    public void hello(RemoteWebDriver driver) {
+        CompositeAction story = new CompositeAction();
+        story.add(new MaximizeAndDeleteCookies());
+        story.add(new OpenAndLogin());
+        story.add(new LogoutAndClose());
+        story.action(driver);
     }
-    
 }

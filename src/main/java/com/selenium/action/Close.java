@@ -1,9 +1,9 @@
 package com.selenium.action;
 
-import com.selenium.ActionData;
+import com.selenium.Action;
 import org.openqa.selenium.WebDriver;
 
-public class Close extends ActionData {
+public class Close implements Action {
 
     @Override
     public void action(WebDriver browser) {

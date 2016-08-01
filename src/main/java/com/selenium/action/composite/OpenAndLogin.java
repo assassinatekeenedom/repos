@@ -1,13 +1,13 @@
 package com.selenium.action.composite;
 
-import com.selenium.UserStory;
+import com.selenium.CompositeAction;
 import com.selenium.action.Click;
 import com.selenium.action.Open;
 import com.selenium.action.Type;
 import com.selenium.action.Wait;
 import org.openqa.selenium.WebDriver;
 
-public class OpenAndLogin extends UserStory {
+public class OpenAndLogin extends CompositeAction {
 
     public OpenAndLogin() {
     }

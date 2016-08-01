@@ -1,12 +1,12 @@
 package com.selenium.action.composite;
 
-import com.selenium.UserStory;
+import com.selenium.CompositeAction;
 import com.selenium.action.Click;
 import com.selenium.action.Close;
 import com.selenium.action.Wait;
 import org.openqa.selenium.WebDriver;
 
-public class LogoutAndClose extends UserStory {
+public class LogoutAndClose extends CompositeAction {
 
     public LogoutAndClose() {
     }

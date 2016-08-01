@@ -1,11 +1,11 @@
 package com.selenium.action.composite;
 
-import com.selenium.UserStory;
+import com.selenium.CompositeAction;
 import com.selenium.action.DeleteAllCookies;
 import com.selenium.action.Maximize;
 import org.openqa.selenium.WebDriver;
 
-public class MaximizeAndDeleteCookies extends UserStory {
+public class MaximizeAndDeleteCookies extends CompositeAction {
 
     public MaximizeAndDeleteCookies() {
     }

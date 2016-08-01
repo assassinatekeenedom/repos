@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.angular.story;
+package com.selenium;
 
 import com.selenium.DataBase;
 import java.util.List;

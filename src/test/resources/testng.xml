@@ -3,17 +3,17 @@
 <suite name="Resource" parallel="methods" thread-count="10">
     <test name="future">
         <classes>
-            <class name="com.angular.story.LoginUserStoryTest" />            
+            <class name="com.selenium.action.composite.LoginAndLogoutUserStoryTest" />
         </classes>
     </test>
     <test name="futureB">
         <classes>
-            <class name="com.selenium.action.composite.CompositeUserStory" />            
+            <class name="com.selenium.action.composite.CompositeUserStoryTest" />            
         </classes>
     </test>
     <test name="past">
         <classes>
-            <class name="com.angular.story.StoryResultsTest" />
+            <class name="com.selenium.StoryResultsTest" />
         </classes>
     </test>
 </suite>

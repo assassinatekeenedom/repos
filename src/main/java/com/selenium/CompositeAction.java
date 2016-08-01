@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.SessionId;
 
-public class UserStory extends LinkedList<Action> implements Action {
+public class CompositeAction extends LinkedList<Action> implements Action {
 
     public void action(WebDriver browser) {
         for (Action action : this) {

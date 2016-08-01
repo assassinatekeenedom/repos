@@ -10,9 +10,6 @@ public class Open extends ActionData {
         browser.get(this.getTarget());
     }
 
-    public Open() {
-    }
-
     public Open(String target) {
         super(target);
     }

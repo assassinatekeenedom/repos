@@ -1,6 +1,6 @@
-package com.angular.story;
+package com.selenium.action.composite;
 
-import com.selenium.UserStory;
+import com.selenium.CompositeAction;
 import com.selenium.action.Click;
 import com.selenium.action.Close;
 import com.selenium.action.DeleteAllCookies;
@@ -10,7 +10,7 @@ import com.selenium.action.Type;
 import com.selenium.action.Wait;
 import org.openqa.selenium.WebDriver;
 
-public class LoginUserStory extends UserStory {
+public class LoginUserStory extends CompositeAction {
 
     public LoginUserStory() {
     }
