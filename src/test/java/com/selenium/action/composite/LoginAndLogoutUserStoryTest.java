@@ -1,6 +1,6 @@
 package com.selenium.action.composite;
 
-import com.selenium.action.composite.LoginUserStory;
+import com.selenium.action.composite.LoginAndLogoutUserStory;
 import com.selenium.CompositeAction;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -23,7 +23,7 @@ public class LoginAndLogoutUserStoryTest extends CompositeAction {
 
     @Test(dataProvider = "browsers", threadPoolSize = 10)
     public void userStory(WebDriver browser) {
-        new LoginUserStory().action(browser);
+        new LoginAndLogoutUserStory().action(browser);
     }
     
 }

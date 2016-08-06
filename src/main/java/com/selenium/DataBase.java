@@ -33,56 +33,80 @@ public class DataBase {
     public static Object save(Object save) {
         Session session = selenium.openSession();
         Transaction tx = session.beginTransaction();
-        session.save(save);
-        session.flush();
-        session.clear();
-        tx.commit();
+        try {
+            session.save(save);
+            session.flush();
+            session.clear();
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+        }
         session.close();
         return save;
     }
 
     public static List getUserStories() {
+        List results = null;
         Session session = selenium.openSession();
         Query query = session.createQuery("select distinct userStory from SaveAction");
-        List results = query.getResultList();
+        try {
+            results = query.getResultList();
+        } catch (Exception e) {
+        }
         session.close();
         return results;
     }
 
     public static List getBrowsers(String userstory) {
+        List results = null;
         Session session = selenium.openSession();
         Query query = session.createQuery("select distinct browser from SaveAction where userStory=:userstory")
                 .setParameter("userstory", userstory);
-        List results = query.getResultList();
+        try {
+            results = query.getResultList();
+        } catch (Exception e) {
+        }
         session.close();
         return results;
     }
 
     public static List getSessionIds(String browser, String userstory) {
+        List results = null;
         Session session = selenium.openSession();
         Query query = session.createQuery("select distinct sessionId from SaveAction where browser=:browser and userStory=:userstory")
                 .setParameter("browser", browser)
                 .setParameter("userstory", userstory);
-        List results = query.getResultList();
+        try {
+            results = query.getResultList();
+        } catch (Exception e) {
+        }
         session.close();
         return results;
     }
 
     public static List getSteps(String sessionId, String userStory) {
+        List results = null;
         Session session = selenium.openSession();
         Query query = session.createQuery("select id, stepNumber, action from SaveAction where sessionId=:sessionId and userStory=:userStory")
                 .setParameter("sessionId", sessionId)
                 .setParameter("userStory", userStory);
-        List results = query.getResultList();
+        try {
+            results = query.getResultList();
+        } catch (Exception e) {
+        }
         session.close();
         return results;
     }
 
     public static String getImage(int id) {
+        List results = null;
         Session session = selenium.openSession();
         Query query = session.createQuery("select image from SaveAction where id=:id")
                 .setParameter("id", id);
-        List results = query.getResultList();
+        try {
+            results = query.getResultList();
+        } catch (Exception e) {
+        }
         session.close();
         return getJSON(base64 + results.get(0));
     }

@@ -10,9 +10,9 @@ import com.selenium.action.Type;
 import com.selenium.action.Wait;
 import org.openqa.selenium.WebDriver;
 
-public class LoginUserStory extends CompositeAction {
+public class LoginAndLogoutUserStory extends CompositeAction {
 
-    public LoginUserStory() {
+    public LoginAndLogoutUserStory() {
     }
 
     @Override
