@@ -50,56 +50,28 @@ public class SaveAction {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getAction() {
         return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
     }
 
     public String getUserStory() {
         return userStory;
     }
 
-    public void setUserStory(String userStory) {
-        this.userStory = userStory;
-    }
-
     public String getBrowser() {
         return browser;
-    }
-
-    public void setBrowser(String browser) {
-        this.browser = browser;
     }
 
     public String getImage() {
         return image;
     }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public String getSessionId() {
         return sessionId;
     }
 
-    public void setSessionId(String sessionId) {
-        this.sessionId = sessionId;
-    }
-
     public int getIndex() {
         return stepNumber;
-    }
-
-    public void setIndex(int index) {
-        this.stepNumber = index;
     }
 
     @Override

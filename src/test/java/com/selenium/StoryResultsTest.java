@@ -5,7 +5,6 @@
  */
 package com.selenium;
 
-import com.selenium.DataBase;
 import java.util.List;
 import org.testng.annotations.Test;
 

@@ -51,9 +51,9 @@ public class DataBase {
         Query query = session.createQuery("select distinct userStory from SaveAction");
         try {
             results = query.getResultList();
-        } catch (Exception e) {
+        } finally {
+            session.close();
         }
-        session.close();
         return results;
     }
 
@@ -64,9 +64,9 @@ public class DataBase {
                 .setParameter("userstory", userstory);
         try {
             results = query.getResultList();
-        } catch (Exception e) {
+        } finally {
+            session.close();
         }
-        session.close();
         return results;
     }
 
@@ -78,9 +78,9 @@ public class DataBase {
                 .setParameter("userstory", userstory);
         try {
             results = query.getResultList();
-        } catch (Exception e) {
+        } finally {
+            session.close();
         }
-        session.close();
         return results;
     }
 
@@ -92,9 +92,9 @@ public class DataBase {
                 .setParameter("userStory", userStory);
         try {
             results = query.getResultList();
-        } catch (Exception e) {
+        } finally {
+            session.close();
         }
-        session.close();
         return results;
     }
 
@@ -105,9 +105,9 @@ public class DataBase {
                 .setParameter("id", id);
         try {
             results = query.getResultList();
-        } catch (Exception e) {
+        } finally {
+            session.close();
         }
-        session.close();
         return getJSON(base64 + results.get(0));
     }
 
